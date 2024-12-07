@@ -3,7 +3,13 @@
     "hono": "jsr:@hono/hono@^4.6.13"
   },
   "tasks": {
-    "dev": "deno run --allow-net --watch main.ts"
+    "formkit-theme-deno:build": "cd formkit-theme-deno && pnpm install && pnpm build",
+    "dev": {
+      "command": "deno run --allow-net --watch main.ts",
+      "dependencies": [
+        "formkit-theme-deno:build"
+      ]
+    }
   },
   "compilerOptions": {
     "jsx": "precompile",
