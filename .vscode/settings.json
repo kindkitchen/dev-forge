@@ -1,3 +1,5 @@
 {
-  "deno.disablePaths": []
+  "deno.disablePaths": [
+    "formkit-theme-deno"
+  ]
 }
