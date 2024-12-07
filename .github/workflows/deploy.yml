@@ -1,0 +1,42 @@
+name: Deploy
+on:
+  push:
+    branches: formkit-themes.deno.dev/main
+  pull_request:
+    branches: formkit-themes.deno.dev/main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write # Needed for auth with Deno Deploy
+      contents: read # Needed to clone the repository
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      # Hope it still be commented
+      # - name: Install Node
+      #   uses: actions/setup-node@v4
+
+      - name: Configure environment
+        run: >
+          echo "${{ vars.FULL_DOTENV_FILE_CONTENT }}" > .env
+
+      - name: Build static for formkit theme 'Deno'
+        run: deno task formkit-theme-deno:build
+
+      - name: Upload to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: "formkit-themes"
+          entrypoint: "main.ts"
+          root: "."
