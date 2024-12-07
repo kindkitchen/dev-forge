@@ -10,7 +10,7 @@
   "tasks": {
     "formkit-theme-deno:fk-pro-key": {
       "description": "Read FormKit Pro key for 'Deno' theme",
-      "command": "deno run -RW formkit-theme-deno.fk-pro-key.ts >> formkit-theme-deno/.env"
+      "command": "deno run -RWE formkit-theme-deno.fk-pro-key.ts >> formkit-theme-deno/.env"
     },
     "formkit-theme-deno:build": {
       "description": "Build FormKit 'Deno' theme",
