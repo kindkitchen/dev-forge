@@ -5,7 +5,7 @@
   "tasks": {
     "formkit-theme-deno:build": "cd formkit-theme-deno && pnpm install && pnpm build",
     "dev": {
-      "command": "deno run --allow-net --watch main.ts",
+      "command": "deno run --allow-net --watch main.tsx",
       "dependencies": [
         "formkit-theme-deno:build"
       ]
