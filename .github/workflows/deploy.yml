@@ -31,7 +31,7 @@ jobs:
 
       - name: Configure environment
         run: >
-          echo "${{ vars.FULL_DOTENV_FILE_CONTENT }}" > .env
+          echo "${{ secrets.FULL_DOTENV_FILE_CONTENT }}" > .env
 
       - name: Build static for formkit theme 'Deno'
         run: deno task formkit-theme-deno:build
@@ -40,5 +40,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "formkit-themes"
-          entrypoint: "main.ts"
+          entrypoint: "main.tsx"
           root: "."
