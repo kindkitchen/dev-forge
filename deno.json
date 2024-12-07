@@ -1,11 +1,26 @@
 {
   "imports": {
+    "@std/collections": "jsr:@std/collections@^1.0.9",
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.3",
+    "@std/path": "jsr:@std/path@^1.0.8",
+    "@std/text": "jsr:@std/text@^1.0.9",
+    "@std/yaml": "jsr:@std/yaml@^1.0.5",
     "hono": "jsr:@hono/hono@^4.6.13"
   },
   "tasks": {
-    "formkit-theme-deno:build": "cd formkit-theme-deno && pnpm install && pnpm build",
+    "formkit-theme-deno:fk-pro-key": {
+      "description": "Read FormKit Pro key for 'Deno' theme",
+      "command": "deno run -RW formkit-theme-deno.fk-pro-key.ts >> formkit-theme-deno/.env"
+    },
+    "formkit-theme-deno:build": {
+      "description": "Build FormKit 'Deno' theme",
+      "command": "cd formkit-theme-deno && pnpm install && pnpm build-web",
+      "dependencies": [
+        "formkit-theme-deno:fk-pro-key"
+      ]
+    },
     "dev": {
-      "command": "deno run --allow-net --watch main.tsx",
+      "command": "deno run -A --watch main.tsx",
       "dependencies": [
         "formkit-theme-deno:build"
       ]
