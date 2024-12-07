@@ -14,7 +14,7 @@
     },
     "formkit-theme-deno:build": {
       "description": "Build FormKit 'Deno' theme",
-      "command": "cd formkit-theme-deno && pnpm install && pnpm build-web",
+      "command": "cd formkit-theme-deno && deno install && deno task build-web",
       "dependencies": [
         "formkit-theme-deno:fk-pro-key"
       ]
