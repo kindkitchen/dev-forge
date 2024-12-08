@@ -32,6 +32,7 @@
       ]
     },
     "build-themes": {
+      "command": "echo Done!",
       "description": "Build all themes",
       "dependencies": [
         "formkit-theme-deno:build",
