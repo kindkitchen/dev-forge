@@ -12,6 +12,8 @@
 3. Conclusion:
    > Separatly build every project and serve under the respective endpoint
 
+4. don't forget to update github secretes
+
 ---
 
 ### Vite:
