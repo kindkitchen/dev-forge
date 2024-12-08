@@ -11,7 +11,7 @@
   "tasks": {
     "formkit-theme-deno:fk-pro-key": {
       "description": "Read FormKit Pro key for 'Deno' theme",
-      "command": "deno run -RWE echo-fk-pro-key.ts --formkit_theme=DENO >> formkit-theme-deno/.env"
+      "command": "deno run -RWE echo-fk-pro-key.ts >> formkit-theme-deno/.env"
     },
     "formkit-theme-deno:build": {
       "description": "Build FormKit 'Deno' theme",
@@ -20,10 +20,22 @@
         "formkit-theme-deno:fk-pro-key"
       ]
     },
+    "formkit-theme-shadcn:fk-pro-key": {
+      "description": "Read FormKit Pro key for 'Deno' theme",
+      "command": "deno run -RWE echo-fk-pro-key.ts --formkit_theme=SHADCN >> formkit-theme-shadcn/.env"
+    },
+    "formkit-theme-shadcn:build": {
+      "description": "Build FormKit 'Deno' theme",
+      "command": "cd formkit-theme-shadcn && deno install && deno task build-web",
+      "dependencies": [
+        "formkit-theme-shadcn:fk-pro-key"
+      ]
+    },
     "dev": {
       "command": "deno run -A --watch main.tsx",
       "dependencies": [
-        "formkit-theme-deno:build"
+        "formkit-theme-deno:build",
+        "formkit-theme-shadcn:build"
       ]
     }
   },

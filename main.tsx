@@ -9,7 +9,14 @@ const config = {
 };
 const app = new Hono();
 const theme_deno_root = join("formkit-theme-deno", "dist");
-console.log(theme_deno_root);
+const theme_shadcn_root = join("formkit-theme-shadcn", "dist");
+
+app.use(
+  "/shadcn/*",
+  serveStatic({
+    root: theme_shadcn_root,
+  }),
+);
 
 app.use(
   "/deno/*",
@@ -29,6 +36,14 @@ app.get("/", (c) => {
             <a href="/deno">Deno theme</a>
             <pre>formkit-theme-deno</pre>
             <p>This theme is inspired by deno-deploy web-site</p>
+          </li>
+          <li>
+            <a href="/shadcn">Shadcn theme</a>
+            <pre>formkit-theme-shadcn</pre>
+            <p>
+              This theme is try to implement shadcn styles on formkit ui
+              elements
+            </p>
           </li>
         </ul>
       </div>
