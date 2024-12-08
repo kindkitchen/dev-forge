@@ -33,8 +33,8 @@ jobs:
         run: >
           echo "${{ secrets.FULL_DOTENV_FILE_CONTENT }}" > .env
 
-      - name: Build static for formkit theme 'Deno'
-        run: deno task formkit-theme-deno:build
+      - name: Build static
+        run: deno task build-themes
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
