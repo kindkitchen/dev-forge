@@ -8,14 +8,33 @@ const config = {
   ...await load() as Partial<Record<"FORMKIT_THEME_DENO" | "PORT", string>>,
 };
 const app = new Hono();
-const root = join("formkit-theme-deno", "dist");
-console.log(root);
+const theme_deno_root = join("formkit-theme-deno", "dist");
+console.log(theme_deno_root);
 
-app.use("/*", serveStatic({ root }));
+app.use(
+  "/deno/*",
+  serveStatic({
+    root: theme_deno_root,
+  }),
+);
 
-// app.get("/", (c) => {
-//   return c.html(<h1>Hi!</h1>);
-// });
+app.get("/", (c) => {
+  return c.html(
+    <div>
+      <div>
+        <h1>Hi, there!</h1>
+        <p>This is my collection of formkit themes:</p>
+        <ul>
+          <li>
+            <a href="/deno">Deno theme</a>
+            <pre>formkit-theme-deno</pre>
+            <p>This theme is inspired by deno-deploy web-site</p>
+          </li>
+        </ul>
+      </div>
+    </div>,
+  );
+});
 
 Deno.serve({
   port: +config.PORT,

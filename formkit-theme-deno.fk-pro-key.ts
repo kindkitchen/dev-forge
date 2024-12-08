@@ -4,7 +4,7 @@ const config = {
   ...Deno.env.toObject(),
   ...await load() as {
     FORMKIT_THEME_DENO: string;
-  }
+  },
 };
 
 console.assert(!!config.FORMKIT_THEME_DENO);
