@@ -5,4 +5,8 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue()],
   envPrefix: "FORMKIT_",
+  base: "/deno",
+  build: {
+    outDir: "dist/deno",
+  },
 });
